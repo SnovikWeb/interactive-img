@@ -1,0 +1,1 @@
+# jQuery Interactive Image Plugin
