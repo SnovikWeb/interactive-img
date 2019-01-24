@@ -22,8 +22,8 @@
             var innerSetting = config;
             innerSetting.imageWidth = obj.data('ii-width') ? obj.data('ii-width') : innerSetting.imageWidth;
             innerSetting.imageHeight = obj.data('ii-height') ? obj.data('ii-height') : innerSetting.imageHeight;
-            innerSetting.mode = obj.data('ii-mode') ? obj.obj('ii-mode') : innerSetting.mode;
-            innerSetting.duration = obj.data('ii-duration') ? obj.obj('ii-duration') : innerSetting.duration;
+            innerSetting.mode = obj.data('ii-mode') ? obj.data('ii-mode') : innerSetting.mode;
+            innerSetting.duration = obj.data('ii-duration') ? obj.data('ii-duration') : innerSetting.duration;
             return innerSetting;
         }
         function initImage() {
