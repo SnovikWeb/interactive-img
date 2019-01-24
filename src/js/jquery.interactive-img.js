@@ -19,11 +19,12 @@
         return this.each(initImage);
 
         function setConfig(obj, config) {
-            config.imageWidth = obj.data('ii-width') ? obj.data('ii-width') : config.imageWidth;
-            config.imageHeight = obj.data('ii-height') ? obj.data('ii-height') : config.imageHeight;
-            config.mode = obj.data('ii-mode') ? $image.obj('ii-mode') : config.mode;
-            config.duration = obj.data('ii-duration') ? $image.obj('ii-duration') : config.duration;
-            return config;
+            var innerSetting = config;
+            innerSetting.imageWidth = obj.data('ii-width') ? obj.data('ii-width') : innerSetting.imageWidth;
+            innerSetting.imageHeight = obj.data('ii-height') ? obj.data('ii-height') : innerSetting.imageHeight;
+            innerSetting.mode = obj.data('ii-mode') ? obj.obj('ii-mode') : innerSetting.mode;
+            innerSetting.duration = obj.data('ii-duration') ? obj.obj('ii-duration') : innerSetting.duration;
+            return innerSetting;
         }
         function initImage() {
             var $image = $(this);
