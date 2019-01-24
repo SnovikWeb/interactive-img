@@ -1,0 +1,65 @@
+.interactive {
+  position: relative;
+  &__img {
+    width: 100%;
+    display: block;
+  }
+  .interactive-darken {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0,0,0,0.3);
+      z-index: 1;
+    }
+  }
+  .interactive-point {
+    position: absolute;
+    z-index: 2;
+    padding: 10px;
+    cursor: pointer;
+    &__point {
+      display: block;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 20px;
+      background: #fff;
+      border: 1px solid #000;
+      text-align: center;
+    }
+    &:hover {
+      .interactive-point__point {
+        background: #a3a3a3;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.67);
+      }
+    }
+    &__description {
+      display: none;
+      z-index: 3;
+      position: absolute;
+      padding: 10px 15px;
+      border: 1px solid #000;
+      background: #fff;
+      margin-left: -15px;
+      margin-top: 10px;
+      border-radius: 4px;
+      box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.67);
+      &::after {
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        top: -6px;
+        left: 19px;
+        transform: rotate(135deg);
+        border-left: 1px solid #000;
+        border-bottom: 1px solid #000;
+        background: #fff;
+      }
+    }
+  }
+}

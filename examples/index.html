@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            line-height: 1;
+        }
+
+        .container {
+            width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="../dist/css/jquery.interactive-img.css">
+</head>
+<body>
+<div class="container">
+    <div class="interactive" data-ii-width="600" data-ii-height="600" data-ii-src="https://picsum.photos/600/600">
+        <div class="interactive-point" data-ii-top="150" data-ii-left="150">
+            <div class="interactive-point__point">+</div>
+            <div class="interactive-point__description">
+                <p>first text</p>
+            </div>
+        </div>
+        <div class="interactive-point" data-ii-top="350" data-ii-left="350">
+            <div class="interactive-point__point">+</div>
+            <div class="interactive-point__description">
+                <iframe width="360" height="115" src="https://www.youtube.com/embed/JUsKOrPvA7U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p>second text</p>
+            </div>
+        </div>
+        <div class="interactive-point" data-ii-top="50" data-ii-left="150">
+            <div class="interactive-point__point">+</div>
+            <div class="interactive-point__description">
+                <p>third text</p>
+                <img src="https://picsum.photos/100/60" alt="">
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="interactive" data-ii-width="600" data-ii-height="300" data-ii-src="https://picsum.photos/600/300">
+        <div class="interactive-point" data-ii-top="150" data-ii-left="150">
+            <div class="interactive-point__point">+</div>
+            <div class="interactive-point__description">
+                <p>first text</p>
+            </div>
+        </div>
+        <div class="interactive-point" data-ii-top="50" data-ii-left="50">
+            <div class="interactive-point__point">+</div>
+            <div class="interactive-point__description">
+                <p>second text</p>
+            </div>
+        </div>
+        <div class="interactive-point" data-ii-top="50" data-ii-left="150">
+            <div class="interactive-point__point">+</div>
+            <div class="interactive-point__description">
+                <p>third text</p>
+                <img src="https://picsum.photos/100/60" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../dist/js/jquery.interactive-img.js"></script>
+<script>
+    $('.interactive').interactiveImg();
+</script>
+</body>
+</html>

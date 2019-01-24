@@ -1,0 +1,19 @@
+{
+  "name": "interactive-img",
+  "version": "1.0.0",
+  "description": "Interactive Images",
+  "author": "Skinka",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.0.1",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "gulp": "^4.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-minify": "^3.1.0",
+    "gulp-rename": "^1.4.0"
+  }
+}
