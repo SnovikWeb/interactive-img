@@ -10,12 +10,6 @@
             options
         );
 
-        $(window).resize(function () {
-            var $image = $(this);
-            var thisSettings = setConfig($image, settings);
-            initPoints($image.find('img'), thisSettings);
-        }.bind(this));
-
         return this.each(initImage);
 
         function setConfig(obj, config) {
@@ -28,13 +22,19 @@
         }
         function initImage() {
             var $image = $(this);
+            $(window).resize(function () {
+                var $image = $(this);
+                console.log($image);
+                var thisSettings = setConfig($image, settings);
+                initPoints($image.find('img'), thisSettings);
+            }.bind($image));
             var image = new Image();
             image.className = 'interactive__img';
             image.onload = function () {
-                var $image = $(this).parent();
+                var $image = $(this);
                 var thisSettings = setConfig($image, settings);
-                initPoints(this, thisSettings)
-            }.bind(image);
+                initPoints($image.find('img'), thisSettings)
+            }.bind($image);
             image.src = $image.data('ii-src');
             $image.append($(image));
             $image.append('<div class="interactive-darken" style="display: none;"></div>');
@@ -54,10 +54,10 @@
             var img = $point.parents('.interactive').find('img.interactive__img');
             top = (parseInt($point.data('ii-top')) * parseInt(img.height())
                 / parseInt(imgSetting.imageHeight))
-                - ($point.height() / 2);
+                - ($point.innerHeight() / 2);
             left = (parseInt($point.data('ii-left')) * parseInt(img.width())
                 / parseInt(imgSetting.imageWidth))
-                - ($point.width() / 2);
+                - ($point.innerWidth() / 2);
             if (imgSetting.mode.indexOf('click') !== false) {
                 $point.on('click', function (e) {
                     $point.find('.interactive-point__description').stop().toggle(imgSetting.duration);
