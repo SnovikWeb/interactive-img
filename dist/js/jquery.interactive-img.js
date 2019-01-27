@@ -20,6 +20,7 @@
             innerSetting.duration = obj.data('ii-duration') ? obj.data('ii-duration') : innerSetting.duration;
             return innerSetting;
         }
+
         function initImage() {
             var $image = $(this);
             $(window).resize(function () {
@@ -58,14 +59,24 @@
             left = (parseInt($point.data('ii-left')) * parseInt(img.width())
                 / parseInt(imgSetting.imageWidth))
                 - ($point.innerWidth() / 2);
+            descriptionPos($point);
+            $(window).resize(function () {
+                correctionPos($point);
+            });
             if (imgSetting.mode.indexOf('click') !== false) {
                 $point.on('click', function (e) {
-                    $point.find('.interactive-point__description').stop().toggle(imgSetting.duration);
+                    $point.parents('.interactive').append($point);
+                    $point.find('.interactive-point__description').stop().toggle(imgSetting.duration, function () {
+                        if ($(window).width() <= 992) {
+                            correctionPos($point);
+                        }
+                    });
                     $point.parent().find('.interactive-darken').stop().toggle(imgSetting.duration);
                 });
             }
-            if (imgSetting.mode.indexOf('hover') !== false) {
+            if (imgSetting.mode.indexOf('hover') !== false && $(window).width() > 992) {
                 $point.hover(function () {
+                    $point.parents('.interactive').append($point);
                     $point.parent().find('.interactive-darken').stop().show(imgSetting.duration);
                     $point.find('.interactive-point__description').stop().show(imgSetting.duration);
                 }, function () {
@@ -76,5 +87,40 @@
 
             $point.css({top: top, left: left});
         }
+
+        function descriptionPos($point) {
+            var desc = $point.find('.interactive-point__description');
+            var desc_pos = $point.data('ii-position') ? $point.data('ii-position') : 'bottom';
+            switch (desc_pos) {
+                case 'top':
+                    desc.addClass('interactive-point__description--top');
+                    desc.css('margin', '-' + (desc.innerHeight() + $point.height() * 1.5) + 'px 0 0 -' + (desc.innerWidth() / 2 - $point.width() / 2) + 'px');
+                    break;
+                case 'bottom':
+                    desc.addClass('interactive-point__description--bottom');
+                    desc.css('margin', ($point.height() / 2) + 'px 0 0 -' + (desc.innerWidth() / 2 - $point.width() / 2) + 'px');
+                    break;
+                case 'right':
+                    desc.addClass('interactive-point__description--right');
+                    desc.css('margin', '-' + (desc.innerHeight() / 2 + $point.height() / 2) + 'px 0 0 ' + $point.width() * 1.5 + 'px');
+                    break;
+                case 'left':
+                    desc.addClass('interactive-point__description--left');
+                    desc.css('margin', '-' + (desc.innerHeight() / 2 + $point.height() / 2) + 'px 0 0 -' + (desc.innerWidth() + $point.width() / 2) + 'px');
+                    break;
+            }
+        }
+
+        function correctionPos($point) {
+            var desc = $point.find('.interactive-point__description');
+            if (desc.offset().top < 0)
+                desc.css('margin-top', (parseInt(desc.css('margin-top')) + Math.abs(desc.offset().top)) + 'px');
+            if (desc.offset().left < 0)
+                desc.css('margin-left', (parseInt(desc.css('margin-left')) + Math.abs(desc.offset().left)) + 'px');
+            if ($(window).width() - (desc.offset().left + desc.width()) < 0) {
+                desc.css('margin-left', (parseInt(desc.css('margin-left')) - Math.abs(($(window).width() - (desc.offset().left + desc.width()))) - parseInt(desc.css('padding-right')) - parseInt(desc.css('padding-left'))) + 'px');
+            }
+        }
+
     }
 })(jQuery);

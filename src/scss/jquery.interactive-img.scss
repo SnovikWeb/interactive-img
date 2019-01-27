@@ -13,12 +13,12 @@
       height: 100%;
       width: 100%;
       background-color: rgba(0,0,0,0.3);
-      z-index: 1;
+      z-index: 100;
     }
   }
   .interactive-point {
     position: absolute;
-    z-index: 2;
+    z-index: 102;
     padding: 10px;
     cursor: pointer;
     &__point {
@@ -39,7 +39,7 @@
     }
     &__description {
       display: none;
-      z-index: 3;
+      z-index: 103;
       position: absolute;
       padding: 10px 15px;
       border: 1px solid #000;
@@ -53,12 +53,44 @@
         position: absolute;
         width: 10px;
         height: 10px;
-        top: -6px;
-        left: 19px;
         transform: rotate(135deg);
         border-left: 1px solid #000;
         border-bottom: 1px solid #000;
         background: #fff;
+        @media (max-width: 991px) {
+          display: none;
+        }
+      }
+
+      &--top {
+        &::after {
+          transform: rotate(-45deg);
+          bottom: -6px;
+          left: calc(50% - 6px);
+        }
+      }
+
+      &--bottom {
+        &::after {
+          top: -6px;
+          left: calc(50% - 6px);
+        }
+      }
+
+      &--left {
+        &::after {
+          transform: rotate(225deg);
+          top: calc(50% - 6px);
+          right: -6px;
+        }
+      }
+
+      &--right {
+        &::after {
+          transform: rotate(45deg);
+          top: calc(50% - 6px);
+          left: -6px;
+        }
       }
     }
   }
