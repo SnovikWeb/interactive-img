@@ -65,19 +65,23 @@
             });
             if (imgSetting.mode.indexOf('click') !== false) {
                 $point.on('click', function (e) {
-                    $point.parents('.interactive').append($point);
+                    var $darken = $point.parent().find('.interactive-darken');
+                    $point.parent().append($darken);
+                    $point.parent().append($point);
+                    $darken.stop().toggle(imgSetting.duration);
                     $point.find('.interactive-point__description').stop().toggle(imgSetting.duration, function () {
                         if ($(window).width() <= 992) {
                             correctionPos($point);
                         }
                     });
-                    $point.parent().find('.interactive-darken').stop().toggle(imgSetting.duration);
                 });
             }
             if (imgSetting.mode.indexOf('hover') !== false && $(window).width() > 992) {
                 $point.hover(function () {
-                    $point.parents('.interactive').append($point);
-                    $point.parent().find('.interactive-darken').stop().show(imgSetting.duration);
+                    var $darken = $point.parent().find('.interactive-darken');
+                    $point.parent().append($darken);
+                    $point.parent().append($point);
+                    $darken.stop().show(imgSetting.duration);
                     $point.find('.interactive-point__description').stop().show(imgSetting.duration);
                 }, function () {
                     $point.parent().find('.interactive-darken').stop().hide(imgSetting.duration);

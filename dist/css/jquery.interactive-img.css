@@ -10,11 +10,10 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-    z-index: 100; }
+      background-color: rgba(0, 0, 0, 0.3);
+  }
   .interactive .interactive-point {
     position: absolute;
-    z-index: 102;
     padding: 10px;
     cursor: pointer; }
     .interactive .interactive-point__point {
@@ -31,7 +30,6 @@
       box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.67); }
     .interactive .interactive-point__description {
       display: none;
-      z-index: 103;
       position: absolute;
       padding: 10px 15px;
       border: 1px solid #000;

@@ -13,12 +13,10 @@
       height: 100%;
       width: 100%;
       background-color: rgba(0,0,0,0.3);
-      z-index: 100;
     }
   }
   .interactive-point {
     position: absolute;
-    z-index: 102;
     padding: 10px;
     cursor: pointer;
     &__point {
@@ -39,7 +37,6 @@
     }
     &__description {
       display: none;
-      z-index: 103;
       position: absolute;
       padding: 10px 15px;
       border: 1px solid #000;
