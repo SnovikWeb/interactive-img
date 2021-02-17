@@ -14,9 +14,7 @@
 ```
 
 ## JavaScript
-
 - Init
-
 ```javascript
 $('.interactive').interactiveImg();
 ```
